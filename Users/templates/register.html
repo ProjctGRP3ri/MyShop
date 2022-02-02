@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% include 'navbar.html' %}
+
+{% block content %} 
+
+{% include 'navbar.html' %}
+
+{% load crispy_forms_tags %}         
+
+<!--User Registeration form details --> 
+{% comment %} Here we have used inbiult from from forms.py file {% endcomment %}
+	<h1 class="text-center p-3">Register</h1>
+<div  class="form-control h-auto mb-5" style="width: 50%; margin-left: 25%; background-color: rgb(201, 187, 216);">
+		<form method="POST">
+			<div class="form-group">
+			{% csrf_token %}
+			{{ register_form|crispy }}       
+			<br>             
+			<button  class="btn btn-primary" type="submit">Register</button>
+			</div>
+		</form>
+
+{% comment %} Below code is to display message if error occurs in filling form {% endcomment %}
+		{% if messages %}  
+			{% for message in messages %}  
+				
+				<strong style="color: red">{{ message }}</strong>
+				 
+            {% endfor %} 
+    	{% endif %}
+		
+		<br>
+		<p class="text-center">If you already have an account, <a href="{% url 'login' %}">login</a> instead.</p>
+</div>
+
+{% endblock %}
+

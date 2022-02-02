@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<h1>Hello, {{user.username|default:'Guest'}}</h1>
+<hr>
+<div class="mt-5" style="width:80%; margin-left:30%;">
+    <div class="border h-auto mb-5 p-5" style="width:45%;">
+        <h4>Delete Account</h4>
+        <hr>
+       <div class="alert alert-danger">
+            <p>Are you sure you want to delete account??</p>
+       </div> 
+       <form method='POST'>
+           {% csrf_token %}
+           <a class='btn btn-secondary' href="{% url 'userdetails' %}">Cancel</a>
+           <input class="btn btn-danger" type="submit" value="Confirm" style="width:100px">
+       </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+

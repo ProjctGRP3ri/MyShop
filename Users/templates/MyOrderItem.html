@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="alert alert-warning">
+    <p ><h3 class="text-center mt-2">Below are your orders placed</h3></p>
+</div> 
+{% if MyOrderData %}
+    {% for Data in MyOrderData %}
+    <div>
+        <div class="border h-auto mb-5 p-5">
+            <div style="display:flex;">
+                    <div style ="width:30%;">
+                        <label for="OrderID">OrderID:</label>  {{Data.OrderId}}<br>
+                        <label for="UserName">User Name:</label>  {{Data.UserName}}<br>
+                        <label for="Product">Product Id:</label>  {{Data.ProductID}}<br>
+                        <label for="DateTime">Order Date:</label>  {{Data.OrderDate}}<br>
+                </div>
+                    <div style ="width:25%; margin-left:30%;">
+                        <img class="card-img-top" src="{{Data.ProductImage}}" alt="Card image cap" height="200" width="5">
+                    </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+
+<h1 class="mb-5 mt-5">Sorry, No Order is Placed Yet !! </h1>
+
+
+{% endif %}
+
+
+{% endblock %}

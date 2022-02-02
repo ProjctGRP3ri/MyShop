@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+{% include 'navbar.html' %}
+<h1 class="text-center p-4" style="color: Purple; text-shadow: 2px 2px 5px pink; ">Who We Are</h1>
+<div style="display: flex;">
+
+<div>
+    <!---Content Paragraph-->
+    <div style="width: 85%; margin-top: 50px; margin-left:20px">
+        <p style ="text-align: justify ">Since 2006, HomeTown has been bringing the latest 
+            designs & fashion to Indian homes. HomeTown offers the widest and best in class range in furniture, 
+            home furnishings & decor, modular kitchens, home improvement and more. Part of the Future Group, 
+            HomeTown brings an enjoyable and hassle-free homemaking experience to all its valuable customers 
+            with varying lifestyles and preferences.
+            We promise to facilitate our customers with a unique and personalized shopping experience.
+             Our commitment to quality and timeless designs has helped us evolve over the years and it indeed fills us with pride to be the first choice of many.
+            With a great spread that appeals to the globe-trotting, trendy yet very much Indian homemaker,
+             HomeTown is known to attract an array of lifestyle seeking customers. Being recognized as 
+             India’s biggest store in homemaking, renovation and decor, our products are exclusively designed 
+             while keeping durability and comfort at priority.The key differentiator between Home Town and 
+             others is the Design and Build offering of end-to-end interior decoration services, to customers who 
+             are interested in renovating & upgrading their homes.
+            From classy sofas to chic dining sets to kitchen essentials and artifacts, we offer everything 
+            to beautify your living space. Since 2006, we’ve grown to over 44 stores across 28 cities. Keeping 
+            pace with the tech-savvy world, we have maintained a strong web presence with prompt online services.</p>
+    </div>
+</div>
+
+<!---Google Map-->
+<div class="p-3" >
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d952.4214063847944!2d74.54714982310978!3d17.282437804837986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc167aeb351e645%3A0xffd69e93080e7e28!2sVIRAJ%20FURNITURE!5e0!3m2!1sen!2sin!4v1642246609217!5m2!1sen!2sin" 
+    width="600" height="425" style="border:2px solid black;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+</div>
+
+
+{% endblock content %}

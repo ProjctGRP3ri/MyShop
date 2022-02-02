@@ -1,0 +1,36 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}      
+{% include 'navbar.html' %}
+
+{% load crispy_forms_tags %}
+
+<!--Login Form--> 
+  <h1 class="text-center p-3">Login</h1>
+<div  class="form-control h-auto p-6 mb-5" style="width: 50%; margin-left: 25%; background-color: rgb(201, 187, 216);">
+    <form method="POST">
+      <div class="form-group">
+          {% csrf_token %}
+          {{ login_form|crispy }}
+        <button class="btn btn-primary mt-4" type="submit">Login</button>
+      </div>
+  </form>
+
+
+  {% comment %} To display messages if error occurs in filling form {% endcomment %}
+  {% if messages %}  
+			{% for message in messages %}  
+				
+				<strong class="text-center" style="color: red">{{ message }}</strong>
+				 
+            {% endfor %} 
+    	{% endif %} 
+      <br>
+  <p class="text-center">Don't have an account? <a class="btn btn-warning" href="{% url 'register' %}">Create an account</a>.</p>
+</div>
+
+
+{% endblock %}
+

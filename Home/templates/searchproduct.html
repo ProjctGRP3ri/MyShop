@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Search Product{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<h1 class="text-center mt-2">Product Search</h1>
+<hr>
+{% comment %} Search for all products from the database {% endcomment %}
+{% if studyproduct or bedproduct or livingproduct or kitchenproduct %}
+<div class="h-auto" style="margin-left: 5%;">
+    <div style="display: inline;" class="container">
+      <div class="row">
+        
+        {% for product in studyproduct %}
+        <div class="col-md-3 shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 20rem;">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{product.IMG}}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Product ID {{product.ProductID}}</p>
+              <h5 class="card-title">{{product.Title}}</h5>
+              <p class="card-text">Amount.{{product.AMT}}</p>
+              <p class="card-text">Discount.{{product.Discount}}</p>
+              <a href="{% url 'studyorder' product.id %}" class="btn btn-primary">Veiw Detail</a>
+            </div>
+           </div>
+        </div>
+        {% endfor %}
+
+        {% for product in bedproduct %}
+        <div class="col-md-3 shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 20rem;">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{product.IMG}}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Product ID {{product.ProductID}}</p>
+              <h5 class="card-title">{{product.Title}}</h5>
+              <p class="card-text">Amount.{{product.AMT}}</p>
+              <p class="card-text">Discount.{{product.Discount}}</p>
+              <a href="{% url 'bedorder' product.id %}" class="btn btn-primary">Veiw Detail</a>
+            </div>
+           </div>
+        </div>
+        {% endfor %}
+
+        {% for product in livingproduct %}
+        <div class="col-md-3 shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 20rem;">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{product.IMG}}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Product ID {{product.ProductID}}</p>
+              <h5 class="card-title">{{product.Title}}</h5>
+              <p class="card-text">Amount.{{product.AMT}}</p>
+              <p class="card-text">Discount.{{product.Discount}}</p>
+              <a href="{% url 'livingorder' product.id %}" class="btn btn-primary">Veiw Detail</a>
+            </div>
+           </div>
+        </div>
+        {% endfor %}
+
+        {% for product in kitchenproduct %}
+        <div class="col-md-3 shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 20rem;">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{product.IMG}}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Product ID {{product.ProductID}}</p>
+              <h5 class="card-title">{{product.Title}}</h5>
+              <p class="card-text">Amount.{{product.AMT}}</p>
+              <p class="card-text">Discount.{{product.Discount}}</p>
+              <a href="{% url 'kitchenorder' product.id %}" class="btn btn-primary">Veiw Detail</a>
+            </div>
+           </div>
+        </div>
+        {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% else %}
+
+<h1 class="mb-5 mt-5">No Search Found</h1>
+
+{% endif %}
+
+
+{% endblock content %}

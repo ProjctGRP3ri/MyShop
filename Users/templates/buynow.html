@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<h1 class="text-center p-3">Buy Product Now !!!</h1>
+<hr>
+
+<div style="display:flex; margin-top:5%; margin-left:10%;">
+
+    {% comment %} To display user dertails {% endcomment %}
+    {% for details in userdetails %}
+    <div class="border h-auto mb-5 p-5" style="width:45%;">
+        <div class="alert alert-warning">
+            <p class="text-center mt-2"><strong>Please Confirm Your Details</strong></p>
+       </div> 
+
+       <div class="border h-auto mb-5 p-5">
+        <label for="username">User Name:</label>  {{details.username}}<br>
+        <label for="firstname">First Name:</label>  {{details.firstname}}<br>
+        <label for="lastname">Last Name:</label>  {{details.lastname}}<br>
+        <label for="mobnum">Mobile Number:</label>  {{details.mobile_number}}<br>
+        <label for="email">Email ID:</label>  {{details.email}}<br>
+        <label for="address">Address:</label>  {{details.address1}}<br>
+       </div>
+        
+
+        {% comment %} <div class="mt-8 pt-8">
+             <a class='btn btn-secondary' href="{% url 'thankyou' %}">Proceed To Buy</a>
+        </div> {% endcomment %}
+    </div>
+    {% endfor %}
+
+
+    
+    
+    {% comment %} The below code will display as per the "page" variable will become true {% endcomment %}
+    {% if page == 'bedbuydetails' %}
+    
+    {% for bedproduct in beditem1 %}
+
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 50%; margin-right:5%;">
+        <div class="border h-auto mb-5 p-5">
+            <img class="card-img-top" src="{{bedproduct.IMG}}" alt="Card image cap" height="500" width="15">
+        </div>
+        {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+          <div class="card-body">
+            <p class="card-text">Product ID {{bedproduct.ProductID}}</p>
+            <h5 class="card-title">{{bedproduct.Title}}</h5>
+            <p class="card-text">Amount.{{bedproduct.AMT}}</p>
+            <p class="card-text">Discount.{{bedproduct.Discount}}</p>
+          </div>
+         {% comment %} </div> {% endcomment %}
+         <div class="mt-8 pt-8">
+            <a class='btn btn-secondary' href="{% url 'MyOrderBed' bedproduct.ProductID  %}">Proceed To Buy</a>
+        </div>
+      </div>
+    
+    {% endfor %}
+    
+    
+    {% elif page == 'kitchenbuydetails' %}
+    
+    {% for kitchenproduct in kitchenitem1 %}
+
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 50%; margin-right:5%;">
+        <div class="border h-auto mb-5 p-5">
+            <img class="card-img-top" src="{{kitchenproduct.IMG}}" alt="Card image cap" height="500" width="15">
+        </div>
+        {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+          <div class="card-body">
+            <p class="card-text">Product ID {{kitchenproduct.ProductID}}</p>
+            <h5 class="card-title">{{kitchenproduct.Title}}</h5>
+            <p class="card-text">Amount.{{kitchenproduct.AMT}}</p>
+            <p class="card-text">Discount.{{kitchenproduct.Discount}}</p>
+          </div>
+         {% comment %} </div> {% endcomment %}
+         <div class="mt-8 pt-8">
+            <a class='btn btn-secondary' href="{% url 'MyOrderKitchen' kitchenproduct.ProductID  %}">Proceed To Buy</a>
+        </div>
+      </div>
+    
+    {% endfor %}
+    
+    
+    {% elif page == 'livingbuydetails' %}
+    
+    {% for livingproduct in livingitem1 %}
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 50%; margin-right:5%;">
+        <div class="border h-auto mb-5 p-5">
+            <img class="card-img-top" src="{{livingproduct.IMG}}" alt="Card image cap" height="500" width="15">
+        </div>
+        {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+          <div class="card-body">
+            <p class="card-text">Product ID {{livingproduct.ProductID}}</p>
+            <h5 class="card-title">{{livingproduct.Title}}</h5>
+            <p class="card-text">Amount.{{livingproduct.AMT}}</p>
+            <p class="card-text">Discount.{{livingproduct.Discount}}</p>
+          </div>
+         {% comment %} </div> {% endcomment %}
+         <div class="mt-8 pt-8">
+            <a class='btn btn-secondary' href="{% url 'MyOrderLiving' livingproduct.ProductID  %}">Proceed To Buy</a>
+        </div>
+      </div>
+    {% endfor %}
+    
+    
+    {% elif page == 'studybuydetails' %}
+    
+    {% for studyproduct in studyitem1 %}
+
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-left: 5%; width: 50%; margin-right:5%;">
+        <div class="border h-auto mb-5 p-5">
+            <img class="card-img-top" src="{{studyproduct.IMG}}" alt="Card image cap" height="500" width="15">
+        </div>
+        {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+          <div class="card-body">
+            <p class="card-text">Product ID {{studyproduct.ProductID}}</p>
+            <h5 class="card-title">{{studyproduct.Title}}</h5>
+            <p class="card-text">Amount.{{studyproduct.AMT}}</p>
+            <p class="card-text">Discount.{{studyproduct.Discount}}</p>
+          </div>
+         {% comment %} </div> {% endcomment %}
+         <div class="mt-8 pt-8">
+            <a class='btn btn-secondary' href="{% url 'MyOrderStudy' studyproduct.ProductID  %}">Proceed To Buy</a>
+        </div>
+      </div>
+    
+    {% endfor %}
+    
+    {% endif %}
+
+</div>
+
+{% endblock content %}

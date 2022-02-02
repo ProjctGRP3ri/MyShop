@@ -1,0 +1,67 @@
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        
+    <div class="container-fluid">
+      <a class="navbar-brand me-5 " href="#">Viraj Furniture Shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active me-4" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-4" href="#">Showrooms</a>
+          </li>
+          <li class="nav-item dropdown me-4">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a href="{% url 'living' %}" class="dropdown-item" href="#">Leaving Room</a></li>
+              <li><a href="{% url 'bedroom' %}" class="dropdown-item" href="#">Bed Room</a></li>
+              <li><a href="{% url 'kitchenroom' %}" class="dropdown-item" href="#">Kitchen Room</a></li>
+              <li><a href="{% url 'studyroom' %}" class="dropdown-item" href="#">Study Room </a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-4" href="{% url 'Aboutus' %}">About US</a>
+          </li>
+        
+        </ul>
+        <form class="d-flex" method="POST" action="{% url 'Searchproduct' %}">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" name="search" placeholder="Search Products Here" aria-label="Search" size="40">
+          <button class="btn btn-outline-success me-3" type="submit">Search</button>
+        </form>
+  
+        {% comment %} If User is logged in then this will run {% endcomment %}
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle btn btn-outline-warning" style="text-decoration: none;color:rgb(121, 121, 3); margin-bottom:15%;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.username|default:'Guest'}}
+          </a> 
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'MyOrderItem' %}">My Orders</a></li>
+            <li><a class="dropdown-item" href="#">Carts</a></li>
+            <li><a class="dropdown-item" href="{% url 'userdetails' %}">My Details </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+          </ul> 
+        </li>
+  
+        {% comment %} <button type="button" class="btn btn-outline-warning">
+          <a href="{% url 'logout' %}" style="text-decoration: none;color:rgb(121, 121, 3);">Logout</a></button> {% endcomment %}
+        {% else %}
+  
+        <button type="button" class="btn btn-outline-warning">
+          <a href="{% url 'login' %}" style="text-decoration: none;color:rgb(121, 121, 3);">Login</a></button>
+  
+        {% endif %}
+        
+      
+      </div>
+    </div>
+  </nav>
+  
